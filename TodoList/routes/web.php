@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 既存コードの16行目以下を削除
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// 追記
+Route::get('{any}', function () {
+    return view('app');
+})->where('any', '.*');
