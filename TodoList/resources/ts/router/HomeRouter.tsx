@@ -1,12 +1,12 @@
 import React from "react";
-import { Home } from "../Page/Home";
-import { TodoList } from "../Page/List";
-import { Page404 } from "../Page/Page404";
-import { TodoEdit } from "../Page/TodoEdit";
+import { Home } from "../components/page/Home";
+import { TodoList } from "../components/page/List";
+import { Page404 } from "../components/page/Page404";
+import { TodoEdit } from "../components/page/TodoEdit";
 
 export const homeRoutes = [
     {
-        path: "/home",
+        path: "/",
         exact: true,
         children: <Home />,
     },
