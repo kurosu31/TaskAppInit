@@ -23,6 +23,9 @@ export const Header: VFC = memo(() => {
         >
             <Heading as="h1" onClick={onClickLinkHome} color="gray.50" >TodoList</Heading>
             <Flex align="center" justify="center" flexGrow={2} display={{ base: "none", md: "flex" }}>
+            <Box px={{ base: 3, md: 5 }} fontSize="lg" fontWeight="bold" color="gray.50" >
+                    <Link onClick={onClickLinkInput}>Home</Link>
+                </Box>
                 <Box px={{ base: 3, md: 5 }} fontSize="lg" fontWeight="bold" color="gray.50" >
                     <Link onClick={onClickLinkEdit}>Edit</Link>
                 </Box>
