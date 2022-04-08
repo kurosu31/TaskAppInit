@@ -3,6 +3,7 @@ import { Home } from "../components/page/Home";
 import { TodoList } from "../components/page/List";
 import { Page404 } from "../components/page/Page404";
 import { TodoEdit } from "../components/page/TodoEdit";
+import { TodoInput } from "../components/page/TodoInput";
 
 export const homeRoutes = [
     {
@@ -14,6 +15,11 @@ export const homeRoutes = [
         path: "/todo_list",
         exact: false,
         children: <TodoList />,
+    },
+    {
+        path: "/todo_input",
+        exact: false,
+        children: <TodoInput />,
     },
     {
         path: "/todo_edit",

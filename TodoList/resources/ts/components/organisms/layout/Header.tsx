@@ -9,8 +9,9 @@ import { MenuDrawer } from "../../molecules/MenuDrawer";
 export const Header: VFC = memo(() => {
     const history = useHistory();
     const onClickLinkHome = () => history.push('/home');
+    const onClickLinkList = () => history.push('/home/todo_list');
     const onClickLinkEdit = () => history.push('/home/todo_edit');
-    const onClickLinkInput = () => history.push('/home/todo_list');
+    const onClickLinkInput = () => history.push('/home/todo_input');
 
 
 
@@ -23,8 +24,11 @@ export const Header: VFC = memo(() => {
         >
             <Heading as="h1" onClick={onClickLinkHome} color="gray.50" >TodoList</Heading>
             <Flex align="center" justify="center" flexGrow={2} display={{ base: "none", md: "flex" }}>
-            <Box px={{ base: 3, md: 5 }} fontSize="lg" fontWeight="bold" color="gray.50" >
+                <Box px={{ base: 3, md: 5 }} fontSize="lg" fontWeight="bold" color="gray.50" >
                     <Link onClick={onClickLinkHome}>Home</Link>
+                </Box>
+                <Box px={{ base: 3, md: 5 }} fontSize="lg" fontWeight="bold" color="gray.50" >
+                    <Link onClick={onClickLinkList}>List</Link>
                 </Box>
                 <Box px={{ base: 3, md: 5 }} fontSize="lg" fontWeight="bold" color="gray.50" >
                     <Link onClick={onClickLinkEdit}>Edit</Link>
@@ -41,7 +45,7 @@ export const Header: VFC = memo(() => {
                 px={{ base: 3, md: 5 }}
             >
                 <MenuIconButton onOpen={onOpen} />
-                <MenuDrawer onClose={onClose} isOpen={isOpen} onClickLinkHome={onClickLinkHome} onClickLinkEdit={onClickLinkEdit} onClickLinkInput={onClickLinkInput} />
+                <MenuDrawer onClose={onClose} isOpen={isOpen} onClickLinkHome={onClickLinkHome} onClickLinkList={onClickLinkList} onClickLinkEdit={onClickLinkEdit} onClickLinkInput={onClickLinkInput} />
             </Box>
         </Flex>
     );
