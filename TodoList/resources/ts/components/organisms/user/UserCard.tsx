@@ -21,8 +21,9 @@ export const UserCard: VFC<Props> = memo((props) => {
                 </Flex>
                 <Text as="p" h="80px">{detail}</Text>
                 <Flex justify="center">
-                    <PrimaryButton>Edit</PrimaryButton>
-                    <PrimaryButton>{completedMark}</PrimaryButton>
+                    {/* <PrimaryButton>Edit</PrimaryButton>
+                    <PrimaryButton>{completedMark}</PrimaryButton> */}
+                    <PrimaryButton>detail</PrimaryButton>
                 </Flex>
             </Stack>
         </Box>
