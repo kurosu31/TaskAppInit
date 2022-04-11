@@ -31,20 +31,15 @@ class PostsTableSeeder extends Seeder
             ],
             [
                 'title' => 'finish an assignment',
-                'detail' => 'mathematics
-                history of Japan
-                Social Studies
-                English',
+                'detail' => 'mathematics, history of Japan, Social Studies, English',
                 'complete' => '0',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' =>  date("Y-m-d H:i:s")
             ],
             [
                 'title' => 'Procurement of foodstuffs',
-                'detail' => 'Asian ginseng (Panax ginseng)
-                pumpkin
-                noodle',
-                'complete' => '0',
+                'detail' => 'Asian ginseng (Panax ginseng), pumpkin, noodle',
+                'complete' => '1',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' =>  date("Y-m-d H:i:s")
             ],

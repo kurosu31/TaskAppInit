@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Post;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\Resource;
+use App\Http\Resources\TodoResource;
 
-use Api\models\Post;
 
 class PostController extends Controller
 {
     // postの一覧を表示する
     public function index()
     {
-        $posts = Post::all();
-        return response()->json($posts, 200);
+        return TodoResource::collection(Post::all());
     }
+    // public function show()
+    // {
+    //     $todo = Post::find();
+    //     return new TodoResource($todo);
+    // }
 }
