@@ -15,16 +15,16 @@ export const MenuDrawer: VFC<Props> = memo((props) => {
     const { onClose, isOpen, onClickLinkHome, onClickLinkList, onClickLinkEdit, onClickLinkInput } = props;
 
     return (
-        <Drawer placement="left" size="sm" onClose={onClose} isOpen={isOpen}>
+        <Drawer autoFocus={false} placement="left" size="sm" onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
             <DrawerContent textAlign="center">
                 <DrawerHeader fontWeight="bold">Menu</DrawerHeader>
                 <DrawerBody>
                     <Stack spacing={4}>
-                        <Button _focus={{ boxShadow: "none" }} w="100%" _hover={{ color: "gray.50", bg: "blue.500" }} onClick={onClickLinkHome}>Home</Button>
-                        <Button _focus={{ boxShadow: "none" }} w="100%" _hover={{ color: "gray.50", bg: "blue.500" }} onClick={onClickLinkList}>List</Button>
-                        <Button _focus={{ boxShadow: "none" }} w="100%" _hover={{ color: "gray.50", bg: "blue.500" }} onClick={onClickLinkEdit}>Edit</Button>
-                        <Button _focus={{ boxShadow: "none" }} w="100%" _hover={{ color: "gray.50", bg: "blue.500" }} onClick={onClickLinkInput}>input</Button>
+                        <Button  w="100%" _hover={{ color: "gray.50", bg: "blue.500" }} onClick={onClickLinkHome}>Home</Button>
+                        <Button  w="100%" _hover={{ color: "gray.50", bg: "blue.500" }} onClick={onClickLinkList}>List</Button>
+                        <Button  w="100%" _hover={{ color: "gray.50", bg: "blue.500" }} onClick={onClickLinkEdit}>Edit</Button>
+                        <Button  w="100%" _hover={{ color: "gray.50", bg: "blue.500" }} onClick={onClickLinkInput}>input</Button>
                     </Stack>
                 </DrawerBody>
             </DrawerContent>
