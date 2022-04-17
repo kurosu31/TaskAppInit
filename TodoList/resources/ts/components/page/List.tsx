@@ -1,18 +1,19 @@
 import { Center, Spinner, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
-import React, { memo, useEffect, VFC } from "react";
+import React, { memo, useCallback, useEffect, VFC } from "react";
 
-import { UserCard } from "../organisms/todo/TodoCard";
+import { TodoCard } from "../organisms/todo/TodoCard";
 import { useGetTodo } from "../../hooks/useGetTodo";
 import { TodoDetailModal } from "../organisms/todo/TodoDetailModal";
+import { useSelectedTodo } from "../../hooks/useSelectedTodo";
 
 export const TodoList: VFC = memo(() => {
-    const { posts, getTodo, loading } = useGetTodo();
     const { onOpen, onClose, isOpen } = useDisclosure();
-
+    const { todoData, getTodo, loading } = useGetTodo();
+    const { onSelectTodo, selectedTodo } = useSelectedTodo();
     useEffect(() => getTodo(), []);
-
-    const onOpenModal = () => onOpen();
-
+    const onClickTodo = useCallback((id: number) => {
+        onSelectTodo({ id, todoData, onOpen })
+    }, [todoData, onOpen])
     return (
         <>
             {loading ? (
@@ -20,14 +21,20 @@ export const TodoList: VFC = memo(() => {
                     <Spinner />
                 </Center>) : (
                 <Wrap justify="center" p={{ base: 4, md: 10 }}>
-                    {posts.map((post) => (
-                        <WrapItem key={post.id}>
-                            <UserCard onClick={onOpenModal} title={post.title} registrationDate={post.todo_at} detail={post.detail} complete={post.complete} />
+                    {todoData.map((todo) => (
+                        <WrapItem key={todo.id}>
+                            <TodoCard
+                                onClick={onClickTodo}
+                                id={todo.id}
+                                title={todo.title}
+                                registrationDate={todo.todo_at}
+                                detail={todo.detail}
+                                complete={todo.complete} />
                         </WrapItem>
                     ))}
                 </Wrap >
             )}
-            <TodoDetailModal isOpen={isOpen} onClose={onClose} />
+            <TodoDetailModal todo={selectedTodo} isOpen={isOpen} onClose={onClose} />
         </>
     );
 });

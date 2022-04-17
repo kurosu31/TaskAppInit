@@ -3,13 +3,14 @@ import { useCallback, useState } from "react";
 import { Todo } from "../type/todo";
 
 export const useGetTodo = () => {
-    const [posts, setPosts] = useState<Array<Todo>>([]);
+    const [todoData, setTodoData] = useState<Array<Todo>>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const getTodo = useCallback(() => {
         setLoading(true);
         axios.get('/api/posts')
             .then((res) => {
-                setPosts(res.data.data);
+                console.log('todoを表示');
+                setTodoData(res.data.data);
                 setLoading(false);
             })
             .catch(() => {
@@ -17,5 +18,5 @@ export const useGetTodo = () => {
                 setLoading(false);
             })
     }, []);
-    return { posts, getTodo, loading }
+    return { todoData, getTodo, loading }
 }
