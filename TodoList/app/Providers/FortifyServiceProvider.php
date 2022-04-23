@@ -29,21 +29,46 @@ class FortifyServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    // public function boot()
+    // {
+    //     Fortify::createUsersUsing(CreateNewUser::class);
+    //     Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
+    //     Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
+    //     Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+
+    //     RateLimiter::for('login', function (Request $request) {
+    //         $email = (string) $request->email;
+
+    //         return Limit::perMinute(5)->by($email.$request->ip());
+    //     });
+
+    //     RateLimiter::for('two-factor', function (Request $request) {
+    //         return Limit::perMinute(5)->by($request->session()->get('login.id'));
+    //     });
+    // }
     public function boot()
     {
         Fortify::createUsersUsing(CreateNewUser::class);
-        Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
-        Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
-        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+        // login,logout,register以外はコメントアウト！
+        //        Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
+        //        Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
+        //        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+        //
+        //        RateLimiter::for('login', function (Request $request) {
+        //            return Limit::perMinute(5)-&gt;by($request-&gt;email.$request-&gt;ip());
+        //        });
+        //
+        //        RateLimiter::for('two-factor', function (Request $request) {
+        //            return Limit::perMinute(5)-&gt;by($request-&gt;session()-&gt;get('login.id'));
+        //        });
 
-        RateLimiter::for('login', function (Request $request) {
-            $email = (string) $request->email;
-
-            return Limit::perMinute(5)->by($email.$request->ip());
+        // /loginでアクセスされたら、このビューを使え！というコードを追加
+        Fortify::loginView(function () {
+            return view('auth.login');
         });
-
-        RateLimiter::for('two-factor', function (Request $request) {
-            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        // /reisterでユーザ登録画面へ
+        Fortify::registerView(function () {
+            return view('auth.register');
         });
     }
 }

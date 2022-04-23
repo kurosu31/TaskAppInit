@@ -7,10 +7,10 @@ export const useGetTodo = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const getTodo = useCallback(() => {
         setLoading(true);
-        axios.get('/api/posts')
+        axios.get<Array<Todo>>('/api/posts')
             .then((res) => {
                 console.log('todoを表示');
-                setTodoData(res.data.data);
+                setTodoData(res.data);
                 setLoading(false);
             })
             .catch(() => {

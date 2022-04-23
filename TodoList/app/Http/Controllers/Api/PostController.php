@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Post;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Request;
+// use Illuminate\Http\Resources\Json\Resource;
 use App\Http\Resources\TodoResource;
-
 
 class PostController extends Controller
 {
@@ -15,9 +15,70 @@ class PostController extends Controller
     {
         return TodoResource::collection(Post::all());
     }
-    // public function show()
-    // {
-    //     $todo = Post::find();
-    //     return new TodoResource($todo);
-    // }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    public function store(Request $request)
+    {
+        $post = new Post;
+        $post->title = $request->title;
+        $post->detail = $request->detail;
+        $post->complete = $request->complete;
+        $post->save();
+        //PostをPostResourceとしてJSON形式で返す
+        return new TodoResource($post);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }
