@@ -54,9 +54,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($request)
     {
         //
+        $post = Post::find($request->id);
+        return new PostResource($post);
     }
 
     /**
@@ -66,9 +68,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $post = Post::find($request->id);
+        $post->title = $request->title;
+        $post->detail = $request->detail;
+        $post->complete = $request->complete;
+        $post->save();
+        $posts = Post::find($request->id);
+        return $posts;
     }
 
     /**

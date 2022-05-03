@@ -34,7 +34,7 @@ export const TodoList: VFC = memo(() => {
                     ))}
                 </Wrap >
             )}
-            <TodoDetailModal todo={selectedTodo} isOpen={isOpen} onClose={onClose} />
+            <TodoDetailModal todoData={selectedTodo} isOpen={isOpen} onClose={onClose} />
         </>
     );
 });

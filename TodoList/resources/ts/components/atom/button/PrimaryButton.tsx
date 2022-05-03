@@ -4,7 +4,7 @@ import React, { memo, ReactNode, VFC } from "react";
 type Props = {
     loading?: boolean;
     disabled?: boolean;
-    onClick: () => void;
+    onClick?: () => void;
     children: ReactNode;
 }
 export const PrimaryButton: VFC<Props> = memo((props) => {
